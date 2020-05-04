@@ -11,16 +11,12 @@ public class LogFilterCache extends AbstractFilterCache {
 	
 	@Override
 	public byte[] doAdd(String key, byte[] buf) {
-		if(log.isInfoEnabled()) {
-			StringBuffer st = new StringBuffer();
-			for(byte b : buf) {
-				st.append(b);
-				st.append(' ');
-			}
-			log.info(">>doAdd key=" + key + "buf : " + st.toString());
-		}
-		log.info("<<doAdd");
-		if(next != null) {
+
+		String strBuff = new String(buf);
+		log.info("logFilter : >>doAdd key = " + key + " -- buf : "+ strBuff +" . ");
+		log.info("logFilter : <<doAdd");
+		
+		if(next!= null) {
 			buf = next.doAdd(key, buf);
 		}
 		return buf;
@@ -29,16 +25,18 @@ public class LogFilterCache extends AbstractFilterCache {
 
 	@Override
 	public byte[] doRetreive(String key, byte[] buf) {
-		// TODO Auto-generated method stub
-		return null;
+		if(next!= null) {
+			buf = next.doRetreive(key, buf);
+		}
+		
+		String strBuff = new String(buf);
+		log.info("logFilter : >>doRetreive key = " + key + " -- buf : "+ strBuff +" . ");
+		log.info("logFilter : <<doRetreive");
+		
+		return buf;
 	}
 
 
-	@Override
-	public IFilterCache setNext(IFilterCache next) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 

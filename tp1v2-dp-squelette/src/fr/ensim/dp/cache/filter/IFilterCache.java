@@ -6,6 +6,4 @@ public interface IFilterCache {
 		
 		byte[] doRetreive(String key, byte[] buf);
 		
-		public IFilterCache setNext(IFilterCache next);
-		
 }

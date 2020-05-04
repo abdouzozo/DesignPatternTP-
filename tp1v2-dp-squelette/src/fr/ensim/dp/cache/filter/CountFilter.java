@@ -1,15 +1,17 @@
 package fr.ensim.dp.cache.filter;
-import fr.ensim.dp.cache.ICache;
 
+import org.apache.log4j.Logger;
 
-public class CountFilter implements IFilterCache {
+import fr.ensim.dp.util.LoggerUtil;
+
+public class CountFilter extends AbstractFilterCache {
 	
-	private ICache cache;
 	private int countAdd;
 	private int countRetrieve;
 	
-	public CountFilter(ICache cache) {
-		this.cache = cache;
+	private static Logger log = LoggerUtil.getLogger();
+	
+	public CountFilter() {
 		this.countAdd = 0;	
 		this.countRetrieve = 0;	
 	}
@@ -24,22 +26,33 @@ public class CountFilter implements IFilterCache {
 
 	@Override
 	public byte[] doAdd(String key, byte[] buf) {
-		cache.add(key, buf);
+	
 		countAdd++;
+		
+		String strBuff = new String(buf);
+		log.info("countFilter : >>doAdd key = " + key + " -- buf : "+ strBuff +" . ");
+		log.info("countFilter : <<doAdd");
+		
+		if(next!= null) {
+			buf = next.doAdd(key, buf);
+		}
 		return buf;
 	}
 
 	@Override
 	public byte[] doRetreive(String key, byte[] buf) {
+		
+		if(next!= null) {
+			buf = next.doRetreive(key, buf);
+		}
 		countRetrieve++;
-		return cache.retreive(key);
+		
+		String strBuff = new String(buf);
+		log.info("countFilter : >>doRetreive key = " + key + " -- buf : "+ strBuff +" . ");
+		log.info("countFilter : <<doRetreive");
+		
+		return buf;
 	}
 
-	@Override
-	public IFilterCache setNext(IFilterCache next) {
-		return null;
-	}
-	
-	
 
 }

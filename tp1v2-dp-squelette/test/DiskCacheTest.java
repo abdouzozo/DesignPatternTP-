@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fr.ensim.dp.cache.DiskCache;
-import fr.ensim.dp.cache.MemoryCache;
+
 
 public class DiskCacheTest {
 	

@@ -1,6 +1,6 @@
 package fr.ensim.dp.cache.filter;
 
-public class EncryptFilterCache implements IFilterCache {
+public class EncryptFilterCache extends AbstractFilterCache {
 	
 	@Override
 	public byte[] doAdd(String key, byte[] buf) {
@@ -14,11 +14,6 @@ public class EncryptFilterCache implements IFilterCache {
 		return null;
 	}
 
-	@Override
-	public IFilterCache setNext(IFilterCache next) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 

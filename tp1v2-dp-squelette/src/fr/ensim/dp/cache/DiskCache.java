@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
+import fr.ensim.dp.cache.filter.IFilterCache;
 import fr.ensim.dp.util.FileUtil;
 
 public class DiskCache implements ICache {
@@ -13,7 +14,16 @@ public class DiskCache implements ICache {
 	
 	private String dir;
 	private File dirFile;
+	private IFilterCache filter;
 	
+	public IFilterCache getFilter() {
+		return filter;
+	}
+
+	public void setFilter(IFilterCache filter) {
+		this.filter = filter;
+	}
+
 	HashMap<String, byte[]> mapImages = new HashMap<>();
 		
 	private DiskCache(String dir) {
