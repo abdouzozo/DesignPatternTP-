@@ -2,7 +2,6 @@ package fr.ensim.dp.cache;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 
 import fr.ensim.dp.cache.filter.IFilterCache;
@@ -58,20 +57,21 @@ public class DiskCache implements ICache {
 	public boolean add(String key, byte[] buf) {
 		File file = new File(dir, key);
 		boolean isInCache = FileUtil.copy(new ByteArrayInputStream(buf), file);
-		mapImages.put(key, buf);
+		if(filter == null)
+			mapImages.put(key, buf);
+		else {
+			buf = filter.doAdd(key, buf);
+			mapImages.put(key, buf);
+		}
 		return isInCache;
 	}
 
 	@Override
 	public byte[] retreive(String key) {
-		File file = new File(dir, key);
-		byte[] imageContenu = null;
-		try {
-			imageContenu = FileUtil.readFile(file);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return imageContenu;
+		
+		byte[] imageContenu = mapImages.get(key);
+		return (filter == null) ? imageContenu : filter.doRetreive(key, imageContenu);
+
 	}
 
 	@Override
