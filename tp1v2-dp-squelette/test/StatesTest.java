@@ -18,10 +18,21 @@ public class StatesTest {
 		assertEquals(player.etat.getClass(),EtatPlay.class);
 		
 		
-		player.forward();
-		assertEquals(player.etat.getClass(),EtatForward.class);
+		/*
+		 * ==== Exceptions ====
+		 * player.forward();
+		 * assertEquals(player.etat.getClass(),EtatForward.class);
+		 */
 		
 		
 	}
+	
+	  @Test(expected = IllegalStateException.class)
+	    public void testExceptions() throws Exception {
+
+	        Player player = new Player();
+	        player.pause();
+
+	    }
 
 }

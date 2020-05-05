@@ -33,23 +33,7 @@ public class DiskCacheTest {
 		map_1.clear();
 		assertEquals(0,map_1.size());
 		
-		
-		
-		/*String str = "12";
-		byte[] bytes_1 = str.getBytes();
-		mc.add("ab", bytes_1);
-		str = "14";
-		byte[] bytes_2 = str.getBytes();
-		mc.add("cd", bytes_2);
-		
-		assertEquals(bytes_1,mc.table_hachage.get("ab"));
-		assertEquals(mc.size(),bytes_1.length + bytes_2.length);
-		
-		byte[] bytes_recherche = mc.retreive("ab");
-        assertEquals(bytes_recherche,bytes_1);
-		
-		mc.clear();
-		assertEquals(mc.size(),0);*/
+
 		
 	}
 

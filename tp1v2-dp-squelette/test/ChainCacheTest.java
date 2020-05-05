@@ -28,7 +28,7 @@ public class ChainCacheTest {
 		//encryptFilter.setNext(compressFilter);
 		
 		
-		MemoryCache.getInstance().setFilter(countFilter);
+		MemoryCache.getInstance().setFilter(countFilter); 
 		
 		String str = "12";
 		byte[] bytes_1 = str.getBytes();
