@@ -2,29 +2,30 @@ package fr.ensim.dp.map.player;
 
 public class Player {
 
-	public IState etat;
+	public StateAdaptator etat;
 
 	public Player() {
 		etat = new EtatStop();
+		etat.setStrState("stop");
 	}
 
 	public void play() {
-		etat.passePlay(this);
+		etat.play(this);
 	}
 
 	public void pause() {
-		etat.passePause(this);
+		etat.pause(this);
 	}
 	
 	public void stop() {
-		etat.passeStop(this);
+		etat.stop(this);
 	}
 	
 	public void backward() {
-		etat.passeBackward(this);
+		etat.backward(this);
 	}
 	
 	public void forward() {
-		etat.passeForward(this);
+		etat.forward(this);
 	}
 }

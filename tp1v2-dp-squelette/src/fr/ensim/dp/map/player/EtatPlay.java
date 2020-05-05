@@ -3,13 +3,13 @@ package fr.ensim.dp.map.player;
 public class EtatPlay extends StateAdaptator {
 
 	@Override
-	public void passeStop(Player pl) {
-		pl.etat = new EtatStop();
+	public void stop(Player player) {
+		player.etat = new EtatStop();
 	} 
 
 	@Override
-	public void passePause(Player pl) {
-		pl.etat = new EtatPause();
+	public void pause(Player player) {
+		player.etat = new EtatPause();
 	} 
 	
 }

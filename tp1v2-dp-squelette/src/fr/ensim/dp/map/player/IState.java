@@ -2,10 +2,10 @@ package fr.ensim.dp.map.player;
 
 public interface IState {
 	
-	public void passePlay(Player o);
-	public void passePause(Player o);
-	public void passeStop(Player o);
-	public void passeBackward(Player o);
-	public void passeForward(Player o);
+	public void play(Player player);
+	public void pause(Player player);
+	public void stop(Player player);
+	public void backward(Player player);
+	public void forward(Player player);
 
 }

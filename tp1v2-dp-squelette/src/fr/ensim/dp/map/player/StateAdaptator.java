@@ -1,31 +1,47 @@
 package fr.ensim.dp.map.player;
 
 public class StateAdaptator implements IState{
+	
+	private String strState;
+	
+	public String getStrState() {
+		return strState;
+	}
+
+	public void setStrState(String strState) {
+		this.strState = strState;
+	}
+
 	@Override
-	public void passePlay(Player o) {
+	public void play(Player player) {
+		strState="play";
 		throw new IllegalStateException();
 	}
 
 	@Override
-	public void passePause(Player o) {
+	public void pause(Player player) {
+		strState="pause";
 		throw new IllegalStateException();		
 	}
 
 	@Override
-	public void passeStop(Player o) {
+	public void stop(Player player) {
+		strState="stop";
 		throw new IllegalStateException();
 		
 	}
 
 	@Override
-	public void passeBackward(Player o) {
+	public void backward(Player player) {
+		strState="backward";
 		throw new IllegalStateException();
 		
 	}
 
 	@Override
-	public void passeForward(Player o) {
-		// TODO Auto-generated method stub
+	public void forward(Player player) {
+		strState="forward";
+		throw new IllegalStateException();
 		
 	}
 
